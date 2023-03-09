@@ -49,6 +49,7 @@ int main()
         }
     }
 
+
     matrix[0][1] = 1;
     matrix[1][0] = 1;
 
