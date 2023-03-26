@@ -9,13 +9,14 @@ const int maxN = 2e5;
 vector<int> adjlist[maxN];
 bool visited[maxN];
 int parent[maxN];
-int dist[maxN];
+int level[maxN];
 int n, m;
 
 bool bfs()
 {
     queue<int> q;
     visited[1] = true;
+    level[1] = 1;
     q.push(1);
     while (!q.empty())
     {
@@ -27,7 +28,7 @@ bool bfs()
         {
             if (!visited[adj_node])
             {
-                dist[adj_node] = dist[head] + 1;
+                level[adj_node] = level[head] + 1;
                 visited[adj_node] = true;
                 parent[adj_node] = head;
                 q.push(adj_node);
@@ -54,12 +55,13 @@ int main()
 
     if (bfs())
     {
-        cout << dist[n] + 1 << endl;
+        cout << level[n] << endl;
         int path = n;
         vector<int> res;
         while (path != 0)
         {
-            res.push_back(path), path = parent[path];
+            res.push_back(path);
+            path = parent[path];
         }
         reverse(res.begin(), res.end());
         for (int node : res)
