@@ -70,7 +70,7 @@ int main()
         adj_list[v].push_back({u, w});
     }
 
-    int src = 3;
+    int src = 4;
     dijkstra(src);
 
     for (int i = 1; i <= nodes; i++)
