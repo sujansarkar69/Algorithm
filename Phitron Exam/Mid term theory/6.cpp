@@ -39,7 +39,7 @@ void bfs(int x, int y, int n, int m)
             int dx_, dy_;
             dx_ = u.first + dx[i];
             dy_ = u.second + dy[i];
-            if (dx_ >= 1 && dx_ <= n && dy_ >= 1 && dy_ <= m && !visited[dx_][dy_] && grid[dx_][dy_] != '#' && grid[dx_][dy_]!='M')
+            if (dx_ >= 1 && dx_ <= n && dy_ >= 1 && dy_ <= m && !visited[dx_][dy_] && grid[dx_][dy_] != '#' && grid[dx_][dy_] != 'M')
             {
                 visited[dx_][dy_] = true;
                 q.push({dx_, dy_});
@@ -116,6 +116,11 @@ int main()
 
         cout << ans.size() << "\n";
         cout << ans << "\n";
+    }
+    else if (n == 1 && m == 1 && grid[start_x][start_y] == 'A')
+    {
+        cout << "YES\n";
+        cout << 0 << "\n";
     }
     else
     {
