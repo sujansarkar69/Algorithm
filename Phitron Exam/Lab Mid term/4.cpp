@@ -6,20 +6,20 @@ Time Complexity: O(n^2)
 Space Complexity: O(n)
 
 input->
-6 7
-3 4 5
-2 3 4
-1 3 6
-6 2 1
-6 4 2
-3 6 3
-5 1 2
+10 10
+1 4 201
+2 3 238
+3 4 40
+3 6 231
+3 8 45
+4 5 227
+4 6 58
+4 9 55
+5 7 14
+6 10 242
 
-source node = 3
-output->
-6 4 0 5 8 3
-
-
+output ->
+1 4 6 10
 
 
 
@@ -31,6 +31,8 @@ const int infinity = 1e9;
 vector<pair<int, int>> adj_list[N];
 int nodes, edges;
 int visited[N], Distance[N];
+int level[N];
+int parent[N];
 
 void dijkstra(int src)
 {
@@ -40,6 +42,7 @@ void dijkstra(int src)
     }
 
     Distance[src] = 0;
+    parent[src] = -1;
 
     for (int i = 0; i < nodes; i++)
     {
@@ -59,7 +62,10 @@ void dijkstra(int src)
             int adj_node = adj_entry.first;
             int edge_cost = adj_entry.second;
             if (Distance[selected_node] + edge_cost < Distance[adj_node])
+            {
                 Distance[adj_node] = Distance[selected_node] + edge_cost;
+                parent[adj_node] = selected_node;
+            }
         }
     }
 }
@@ -78,9 +84,30 @@ int main()
     int src = 1;
     dijkstra(src);
 
-    for (int i = 1; i <= nodes; i++)
+    int dest_node = nodes;
+
+    if (visited[dest_node] == 0)
     {
-        cout << Distance[i] << " ";
+        cout << -1 << endl;
+        return 0;
+    }
+
+    int sel_node = dest_node;
+
+    vector<int> path;
+
+    while (true)
+    {
+        path.push_back(sel_node);
+        if (sel_node == src)
+            break;
+        sel_node = parent[sel_node];
+    }
+    reverse(path.begin(), path.end());
+
+    for (auto val : path)
+    {
+        cout << val << " ";
     }
     cout << endl;
 

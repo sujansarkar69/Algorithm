@@ -14,14 +14,10 @@ int nodes, edge;
 int visited[N], d[N];
 const int INF = INT_MAX;
 
-void dijkstra(int src){
+void dijkstra(int src)
+{
     for (int i = 0; i < nodes; i++)
         d[i] = INF;
-
-
-    //Pneumonoultramicroscopicsilicovolcanoconiosis
-    
-    
 }
 
 int main()

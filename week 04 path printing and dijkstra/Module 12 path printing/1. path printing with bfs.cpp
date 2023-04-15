@@ -5,7 +5,7 @@ const int N = 1e5;
 vector<int> adj_list[N];
 bool visited[N];
 int level[N];
-int parent[N];
+int parent[N]; 
 
 void bfs(int src)
 {
