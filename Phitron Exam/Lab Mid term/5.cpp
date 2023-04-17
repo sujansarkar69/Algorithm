@@ -2,7 +2,7 @@
 using namespace std;
 
 const int N = 2005;
-int visited[N][N], maze[N][N];
+int visited[N][N], room[N][N];
 
 int dx[] = {0, 0, 1, -1};
 int dy[] = {1, -1, 0, 0};
@@ -20,7 +20,7 @@ bool is_valid(int i, int j)
 
 bool is_safe(int i, int j)
 {
-    if (maze[i][j] == -1)
+    if (room[i][j] == -1)
     {
         return false;
     }
@@ -74,7 +74,7 @@ int main()
         {
             if (str[j] == '#')
             {
-                maze[i][j] = -1;
+                room[i][j] = -1;
             }
         }
     }
@@ -85,7 +85,7 @@ int main()
     {
         for (int j = 0; j < m; j++)
         {
-            if (visited[i][j] == 0 && maze[i][j] == 0)
+            if (visited[i][j] == 0 && room[i][j] == 0)
             {
                 int len_room = 0;
                 dfs(i, j, len_room);
