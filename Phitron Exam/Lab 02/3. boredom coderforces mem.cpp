@@ -1,31 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 1e5;
-int dp[N];
+const long long N = 1e5 + 10;
+vector<long long> a(N, 0);
+vector<long long> dp(N, -1);
 
-int boredom(int n)
+long long f(int n)
 {
-    if(n == 0) return 0;
-    if(n == 1) return dp[1];
+    if(n < 1) return 0;
 
-    return max( boredom(n-1), boredom(n-2) + n * dp[n]); 
+    long long &x = dp[n];
+    if(x != -1) return x;
+
+    x = max(f(n - 1), f(n - 2) + a[n] * n);
+
+    return x;
 }
 
 int main()
 {
-    int n, maxx = 0;
+    int n;
     cin >> n;
 
     for(int i = 0; i < n; i++)
     {
         int b;
         cin >> b;
-        dp[b]++;
-
-        maxx = max(maxx,b);
+        a[b]++;
     }
 
-    cout << boredom(maxx) << endl;
+    cout << f(100000) << endl;
     return 0;
 }
