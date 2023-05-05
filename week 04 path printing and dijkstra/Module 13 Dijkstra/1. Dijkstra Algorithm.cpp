@@ -19,7 +19,19 @@ source node = 3
 output->
 6 4 0 5 8 3
 
-
+7 12
+2 1 3
+2 3 18
+3 1 22
+3 7 1
+3 4 2
+1 4 1
+1 8 3
+1 6 3
+6 8 2
+6 7 2
+4 8 10
+4 7 4
 
 
 
@@ -75,7 +87,7 @@ int main()
         adj_list[v].push_back({u, w});
     }
 
-    int src = 1;
+    int src = 2;
     dijkstra(src);
 
     for (int i = 1; i <= nodes; i++)

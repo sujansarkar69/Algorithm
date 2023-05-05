@@ -25,6 +25,18 @@ list of adjacent node->
 2 4
 5 4
 
+6 9
+1 2
+1 4
+2 3
+2 5
+3 5
+3 4
+4 5
+4 6
+5 6
+
+
 */
 const int N = 1e5;
 vector<int> adj_list[N];
@@ -65,8 +77,8 @@ int main()
         adj_list[v].push_back(u);
     }
 
-    int src;
-    cin >> src;
+    int src = 2;
+    // cin >> src;
     bfs(src);
     return 0;
 }
