@@ -18,7 +18,7 @@ int LCS(int i, int j)
     if(dp[i][j] != -1) return dp[i][j];
 
     //calculate result from smaller sub-problems
-    int ans1, ans2;
+    int ans1 = 0, ans2 = 0;
     if(s[i] == t[j]) ans1 = 1 + LCS(i + 1, j + 1);
     else ans2 = max(LCS(i + 1, j), LCS(i, j + 1));
 
