@@ -14,24 +14,24 @@ int main() {
     
     //Base case:
     for(int i = 0; i <= n; i++) {
-        dp[i][m] = 0;
+        dp[i][0] = 0;
     }
     for(int j = 0; j <= m; j++) {
-        dp[n][j] = 0;
+        dp[0][j] = 0;
     }
 
     //loop over the states
-    for(int i = n - 1; i >= 0; i--) {
-        for(int j = m - 1; j >= 0; j--) {
-            if(s[i] == t[i]) {
-                dp[i][j] = 1 + dp[i + 1][j + 1];
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= m; j++) {
+            if(s[i - 1] == t[i - 1]) {
+                dp[i][j] = 1 + dp[i - 1][j - 1];
             }else {
-                dp[i][j] = max(dp[i + 1][j], dp[i][j + 1]);
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
             }
         }
     }
 
-    cout << dp[0][0] << endl;
+    cout << dp[n][m] << endl;
     
     return 0;
 }
