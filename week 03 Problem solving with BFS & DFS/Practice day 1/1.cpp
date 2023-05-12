@@ -12,7 +12,7 @@ const int N = 2e5;
 
 vector<int> adj_list[N];
 int visited[N];
-void bfs(int node)
+void dfs(int node)
 {
     queue<int> q;
     visited[node] = 1;
@@ -50,7 +50,7 @@ int main()
     {
         if (visited[i] == 0)
         {
-            bfs(i);
+            dfs(i);
             cnt++;
         }
     }
